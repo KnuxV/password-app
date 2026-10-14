@@ -28,3 +28,9 @@ uv run pytest                 # the tests, and the examples in the docstrings
 uv run pdoc -d google strong_password.py strength.py            # opens the docs in your browser
 uv run pdoc -d google strong_password.py strength.py -o site    # writes them as HTML files in site/
 ```
+
+## CI/CD
+
+`.github/workflows/ci.yml` runs on every push to `main`: **test** → **docs** → **deploy**. If a test fails, the docs are not rebuilt and the site keeps its last good version.
+
+The docs are online at <https://knuxv.github.io/password-app/>. On your own copy, turn it on once: **Settings → Pages → Source: GitHub Actions**.

@@ -1,0 +1,42 @@
+# On every push to main: run the tests, then build the docs, then publish them.
+# If the tests fail, nothing after them runs: broken code never gets new docs.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # adds a "Run workflow" button in the Actions tab
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: uv sync
+      - run: uv run pytest
+
+  docs:
+    needs: test # only if the tests passed
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: uv sync
+      - run: uv run pdoc -d google strong_password.py strength.py -o site
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: docs
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # allowed to publish to GitHub Pages
+      id-token: write # proves to Pages that the files come from this workflow
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
