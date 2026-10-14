@@ -21,3 +21,10 @@ uv run pytest                 # the tests, and the examples in the docstrings
 - `strength.py` — how strong is a password, with the `zxcvbn` library
 - `tests/` — pytest suite
 - `data/eff_large_wordlist.txt` — the EFF long wordlist (7776 words)
+
+## Documentation from the docstrings
+
+```bash
+uv run pdoc -d google strong_password.py strength.py            # opens the docs in your browser
+uv run pdoc -d google strong_password.py strength.py -o site    # writes them as HTML files in site/
+```

@@ -7,7 +7,9 @@ Two kinds of password:
 
 Run it:
 
-    uv run strong_password.py
+```bash
+uv run strong_password.py
+```
 
 Use it from Python:
 
@@ -28,9 +30,10 @@ SPECIAL = "!@#$%^&*()-_=+[]{}|;:,.<>?"
 CHAR_SETS: list[str] = [LOWERCASE, UPPERCASE, DIGITS, SPECIAL]
 """The four kinds of character a random password mixes."""
 
+# le _ au début : nom privé, pdoc ne le montre pas
 # la liste de mots est à côté de ce fichier : le script marche depuis n'importe quel dossier
-WORDLIST_FILE = Path(__file__).parent / "data" / "eff_large_wordlist.txt"
-with open(WORDLIST_FILE, encoding="utf-8") as f:
+_WORDLIST_FILE = Path(__file__).parent / "data" / "eff_large_wordlist.txt"
+with open(_WORDLIST_FILE, encoding="utf-8") as f:
     # chaque ligne est "11111<TAB>abacus" : on garde le mot, avec une majuscule
     WORD_LIST: list[str] = [line.split()[1].capitalize() for line in f]
 

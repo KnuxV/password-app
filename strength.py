@@ -5,7 +5,9 @@ and repeats, and estimates how long an attacker would need to guess the password
 
 Run it to compare a memorable and a random password:
 
-    uv run strength.py
+```bash
+uv run strength.py
+```
 """
 
 from dataclasses import dataclass

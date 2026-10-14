@@ -10,6 +10,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pdoc>=16.0.0",
     "pytest>=9.1.1",
 ]
 
