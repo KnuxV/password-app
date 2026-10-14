@@ -34,3 +34,11 @@ uv run pdoc -d google strong_password.py strength.py -o site    # writes them as
 `.github/workflows/ci.yml` runs on every push to `main`: **test** → **docs** → **deploy**. If a test fails, the docs are not rebuilt and the site keeps its last good version.
 
 The docs are online at <https://knuxv.github.io/password-app/>. On your own copy, turn it on once: **Settings → Pages → Source: GitHub Actions**.
+
+## The web app
+
+```bash
+uv run streamlit run app.py
+```
+
+Your browser opens <http://localhost:8501>. Stop the app with `Ctrl+C` in the terminal. `tests/test_app.py` tests the app without a browser, with Streamlit's `AppTest`.
