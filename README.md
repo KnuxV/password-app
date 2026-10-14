@@ -42,3 +42,16 @@ uv run streamlit run app.py
 ```
 
 Your browser opens <http://localhost:8501>. Stop the app with `Ctrl+C` in the terminal. `tests/test_app.py` tests the app without a browser, with Streamlit's `AppTest`.
+
+## License
+
+The code is under the **MIT** license (`LICENSE`): anyone may use, copy, modify and sell it, as long as they keep the copyright notice.
+
+What the project contains but did not write keeps its own license:
+
+- `data/eff_large_wordlist.txt` — © Electronic Frontier Foundation, [CC BY 3.0 US](https://creativecommons.org/licenses/by/3.0/us/), from <https://www.eff.org/dice>.
+- The dependencies (`zxcvbn` MIT, `streamlit` Apache-2.0, `pdoc` MIT-0, `pytest` MIT, and what they pull in). List them all with:
+
+```bash
+uv run --with pip-licenses pip-licenses
+```
