@@ -1,5 +1,7 @@
 """Strong password generator.
 
+Ceci est un site de génération de mot de passe
+
 Two kinds of password:
 
 - **memorable**: random words from the EFF long wordlist (`Stubbed Congress Tiptop`)
@@ -108,7 +110,7 @@ class StrongPassword:
 
 def main() -> None:
     """Print one memorable password of five words."""
-    generator = StrongPassword(length=5, type_p=TypePassword.MEMORABLE)
+    generator = StrongPassword(length=12, type_p=TypePassword.RANDOM)
     print(generator.generate())
 
 
